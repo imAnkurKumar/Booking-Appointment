@@ -33,7 +33,7 @@
      email,
      phoneNumber
     };
-    axios.post("https://crudcrud.com/api/cafb5c29b303444abbec83648e15bdc3/appointmentData", myObj)
+    axios.post("https://crudcrud.com/api/c90575841f3e450d9e0de404eec5abf5/appointmentData", myObj)
           .then((response) =>{
             showUserOnscreen(response.data)
             console.log(response)
@@ -48,7 +48,7 @@
     // showUserOnscreen(myObj);
    }
    window.addEventListener("DOMContentLoaded",()=>{
-                axios.get("https://crudcrud.com/api/cafb5c29b303444abbec83648e15bdc3/appointmentData")
+                axios.get("https://crudcrud.com/api/c90575841f3e450d9e0de404eec5abf5/appointmentData")
                      .then((response)=>{
                         for(var i=0;i<response.data.length;i++){
                           showUserOnscreen(response.data[i])
@@ -65,31 +65,32 @@
     const parentNode = document.getElementById('listOfUsers');
 
     const childHTML = `<li id=${user.email}> ${user.name} - ${user.email} - ${user.phoneNumber}
-                                        <button onclick=deleteUser('${user.email}')> Delete User </button>
+                                         <button onclick=deleteUser('${user.email}')> Delete User </button>
                                         <button onclick=editUserDetails('${user.email}','${user.name}','${user.phonenumber}')>Edit User </button>
+                                        
                                      </li>`
     parentNode.innerHTML = parentNode.innerHTML + childHTML;
    }
-//    function editUserDetails(email, name, phoneNumber){
+   function editUserDetails(email, name, phoneNumber){
 
-//    document.getElementById('email').value = email;
-//    document.getElementById('name').value = name;
-//    document.getElementById('phoneNumber').value = phoneNumber;
+   document.getElementById('email').value = email;
+   document.getElementById('name').value = name;
+   document.getElementById('phoneNumber').value = phoneNumber;
 
-//    deleteUser(email)
-//  }
-//  function deleteUser(email){
-//                 console.log(email)
-//                 localStorage.removeItem(email);
-//                 removeUserFromScreen(email);
+   deleteUser(email)
+ }
+ function deleteUser(email){
+                console.log(email)
+                localStorage.removeItem(email);
+                removeUserFromScreen(email);
 
-// } 
-// function removeUserFromScreen(email){
-//                 const parentNode = document.getElementById('listOfUsers');
-//                 const childNodeToBeDeleted = document.getElementById(email);
+} 
+function removeUserFromScreen(email){
+                const parentNode = document.getElementById('listOfUsers');
+                const childNodeToBeDeleted = document.getElementById(email);
 
-//                 parentNode.removeChild(childNodeToBeDeleted)
-//  }
+                parentNode.removeChild(childNodeToBeDeleted)
+ }
            
   </script>
 
